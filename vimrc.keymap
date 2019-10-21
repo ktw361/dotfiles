@@ -1,0 +1,34 @@
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+ino {<CR> {<CR>}<ESC>O
+
+" Clear highlighting on escape in normal mode
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
+" fast close quickfix and location list
+nnoremap <esc><esc><esc> :ccl<cr>:lcl<cr>:pc<cr>:TagbarClose<cr>:NERDTreeTabsClose<cr>
+
+inoremap <C-S-Sapce> <C-Space>
+
+" " zt after tag jump
+" nnoremap <C-]> <C-]>zt
+" nnoremap <C-i> <C-i>zt
+
+" fast fold
+" nnoremap <space> zA
+" vnoremap <space> zf
+
+" Use ^p ^n to move aroung tabs
+nnoremap <C-y> gT
+nnoremap <C-p> gt
+
+" search and highlight without jump immediately
+nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
+
+" Leader available as , or <space>
+" nmap <space> ,
+nnoremap <leader>dt :windo difft<cr>
+nnoremap <leader>do :windo diffo<cr>
