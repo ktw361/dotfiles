@@ -32,3 +32,7 @@ nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
 " nmap <space> ,
 nnoremap <leader>dt :windo difft<cr>
 nnoremap <leader>do :windo diffo<cr>
+
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+vnoremap <leader>y "+y
