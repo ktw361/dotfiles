@@ -152,3 +152,10 @@ eval `dircolors $HOME/.dir_colors/dircolors`
 
 # SCM Breeze
 [ -s "/home/damon/.scm_breeze/scm_breeze.sh" ] && source "/home/damon/.scm_breeze/scm_breeze.sh"
+
+function cd {
+    builtin cd "$@" && ls -F
+}
+
+# for cs143 compiler `cool`
+PATH=$HOME/cs143/bin:$PATH
