@@ -18,6 +18,8 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'skywind3000/asyncrun.vim'
+" Plug 'Chiel92/vim-autoformat'
 " Plug 'tmhedberg/SimpylFold'
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
 " Plug 'cjrh/vim-conda'
@@ -58,18 +60,35 @@ set wildmenu
 set exrc  " per project .vimrc
 set tags=./.tags;,.tags
 
-command! MakeTags !ctags -f .tags -R .
+command! MakeTags :AsyncRun ctags -f .tags -R .
 
-autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
-" autocmd filetype python set foldmethod=indent
-" autocmd filetype python set foldnestmax=2
-autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc -g '.shellescape('%').' -o '.shellescape('%:r').' && echo Compilation complete && ./'.shellescape('%:r')<CR>
-autocmd filetype cuda nnoremap <F4> :w <bar> exec '!nvcc -g -G -O0 -std=c++11 '.shellescape('%').' -o '.shellescape('%:r').' && echo Compilation complete && ./'.shellescape('%:r')<CR>
-" autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 -Wall -g '.shellescape('%').' -o'.shellescape('%:r').' && echo Compilation complete && ./'.shellescape('%:r')<CR>
-autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 -Wall -g -fsanitize=address '.shellescape('%').' -o'.shellescape('%:r').' && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./'.shellescape('%:r')<CR>
-autocmd filetype go nnoremap <F4> :w <bar> exec '!go run '.shellescape('%')<CR>
-autocmd filetype sh nnoremap <F4> :w <bar> exec '!bash '.shellescape('%')<CR>
+" If we dont't have a local vimrc, then we set <F4> to execute single file.
+" otherwise(non empty case), we don't set it here
+let local_vimrc=findfile(".vimrc", ".")
+if empty(local_vimrc)
+    autocmd filetype python nnoremap <F4> :w <bar> :AsyncRun -raw python3 %<CR>
+    " autocmd filetype python set foldmethod=indent
+    " autocmd filetype python set foldnestmax=2
+    autocmd filetype c nnoremap <F4> :w <bar> :AsyncRun gcc -g % -o %:r && echo Compilation complete && ./%:r<CR>
+    " autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 -Wall -g -fsanitize=address '.shellescape('%').' -o'.shellescape('%:r').' && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./'.shellescape('%:r')<CR>
+    autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -g -fsanitize=address % -o %:r  && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./%:r<CR>
+    autocmd filetype go nnoremap <F4> :w <bar> :AsyncRun go run %<CR>
+    autocmd filetype sh nnoremap <F4> :w <bar> :AsyncRun bash %<CR>
+    autocmd filetype cuda nnoremap <F4> :w <bar> :AsyncRun nvcc -g -G -O0 -std=c++11 % -o %:r && echo Compilation complete && ./%:r<CR>
+    autocmd filetype cool nnoremap <F4> :w <bar> :AsyncRun coolc % && spim %:r.s<CR>
+endif
 " let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+" Quickfix/Location window
+autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+
+" AsyncRun.vim
+" automatically open quickfix window when AsyncRun command is executed
+" set the quickfix window 6 lines height.
+let g:asyncrun_open = 10
+
+" Cool Language commentary
+autocmd FileType cool setlocal commentstring=--\ %s
 
 " SimpylFold
 " let g:SimpylFold_fold_import = 0

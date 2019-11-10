@@ -21,9 +21,10 @@ inoremap <C-S-Sapce> <C-Space>
 " nnoremap <space> zA
 " vnoremap <space> zf
 
-" Use ^p ^n to move aroung tabs
+" Moving aroung tabs
 nnoremap <C-y> gT
 nnoremap <C-p> gt
+nnoremap <C-n> <C-y>
 
 " search and highlight without jump immediately
 nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
