@@ -86,6 +86,8 @@ autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 " automatically open quickfix window when AsyncRun command is executed
 " set the quickfix window 6 lines height.
 let g:asyncrun_open = 10
+map <leader>a :AsyncRun 
+map <leader>g :AsyncRun ag 
 
 " Cool Language commentary
 autocmd FileType cool setlocal commentstring=--\ %s
