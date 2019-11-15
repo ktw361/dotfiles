@@ -61,6 +61,7 @@ set exrc  " per project .vimrc
 set tags=./.tags;,.tags
 
 command! MakeTags :AsyncRun ctags -f .tags -R .
+command! MakeCscope :AsyncRun cscope -f .cscope.out -R -b
 
 " If we dont't have a local vimrc, then we set <F4> to execute single file.
 " otherwise(non empty case), we don't set it here
@@ -129,9 +130,10 @@ let g:AutoPairs={}
 let g:bufexplorer_version = "disabled"
 
 " Find cscope
-let cscope_file=findfile("cscope.out", ".;")
+let cscope_file=findfile(".cscope.out", ".;")
 if !empty(cscope_file) && filereadable(cscope_file)
     exe "cs add" cscope_file 
+    source ~/.vim_runtime/my_plugins/cscope.vim
 endif
 
 " current line function info in python
