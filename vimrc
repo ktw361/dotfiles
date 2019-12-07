@@ -70,9 +70,9 @@ if empty(local_vimrc)
     autocmd filetype python nnoremap <F4> :w <bar> :AsyncRun -raw python3 %<CR>
     " autocmd filetype python set foldmethod=indent
     " autocmd filetype python set foldnestmax=2
-    autocmd filetype c nnoremap <F4> :w <bar> :AsyncRun gcc -g % -o %:r && echo Compilation complete && ./%:r<CR>
+    autocmd filetype c nnoremap <F4> :w <bar> :AsyncRun gcc -O0 -g % -o %:r && echo Compilation complete && ./%:r<CR>
     " autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 -Wall -g -fsanitize=address '.shellescape('%').' -o'.shellescape('%:r').' && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./'.shellescape('%:r')<CR>
-    autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -g -fsanitize=address % -o %:r  && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./%:r<CR>
+    autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./%:r<CR>
     autocmd filetype go nnoremap <F4> :w <bar> :AsyncRun go run %<CR>
     autocmd filetype sh nnoremap <F4> :w <bar> :AsyncRun bash %<CR>
     autocmd filetype cuda nnoremap <F4> :w <bar> :AsyncRun nvcc -g -G -O0 -std=c++11 % -o %:r && echo Compilation complete && ./%:r<CR>
@@ -86,7 +86,7 @@ autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 " AsyncRun.vim
 " automatically open quickfix window when AsyncRun command is executed
 " set the quickfix window 6 lines height.
-let g:asyncrun_open = 10
+let g:asyncrun_open = 7
 map <leader>a :AsyncRun 
 map <leader>g :AsyncRun ag 
 

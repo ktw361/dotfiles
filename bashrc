@@ -153,21 +153,25 @@ eval `dircolors $HOME/.dir_colors/dircolors`
 # SCM Breeze
 [ -s "/home/damon/.scm_breeze/scm_breeze.sh" ] && source "/home/damon/.scm_breeze/scm_breeze.sh"
 
-function cd {
-    # cd + ls 
-    local target="$@"
-    if [[ -z "$target" ]]; then
-        builtin cd && ls -F
-    else
-        local num_files=`ls $target -1 | wc -l`
-        if (( $num_files < 100 )); then
-            builtin cd "$target" && ls -F
-        else
-            # Normal cd if too many files
-            builtin cd "$target"
-        fi
-    fi
-}
+# function cd {
+#     # cd + ls 
+#     local target="$@"
+#     if [[ -z "$target" ]]; then
+#         builtin cd && ls -F
+#     else
+#         local num_files=`ls $target -1 | wc -l`
+#         if (( $num_files < 100 )); then
+#             builtin cd "$target" && ls -F
+#         else
+#             # Normal cd if too many files
+#             builtin cd "$target"
+#         fi
+#     fi
+# }
 
 # for cs143 compiler `cool`
-PATH=$HOME/cs143/cool/bin:$PATH
+PATH=$HOME/cool_cs143/bin:$PATH
+
+# clang-ctags
+export LD_LIBRARY_PATH=$HOME/Github/llvm-project/build/lib/libclang.so:$LD_LIBRARY_PATH
+export PYTHONPATH=$HOME/Github/llvm-project/clang/bindings/python/:$PYTHONPATH

@@ -1,4 +1,4 @@
-alias grepn='grep -rn --exclude='"'"'tags'"'"''
+alias grepn='grep -rn --exclude='"'"'.tags'"'"''
 alias agn='ag -p ~/.ignore'
 # alias agn='ag --ignore='"'"'tags'"'"''
 
