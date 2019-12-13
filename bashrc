@@ -117,7 +117,7 @@ fi
 # fi
 
 # added by Anaconda2 installer
-export PATH="/home/damon/anaconda2/bin:$PATH"
+export PATH=$HOME"/anaconda2/bin:$PATH"
 
 # for CUDA-9.0
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
@@ -151,7 +151,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 eval `dircolors $HOME/.dir_colors/dircolors`
 
 # SCM Breeze
-[ -s "/home/damon/.scm_breeze/scm_breeze.sh" ] && source "/home/damon/.scm_breeze/scm_breeze.sh"
+[ -s $HOME"/.scm_breeze/scm_breeze.sh" ] && source $HOME"/.scm_breeze/scm_breeze.sh"
 
 # function cd {
 #     # cd + ls 
