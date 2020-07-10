@@ -19,10 +19,16 @@ Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'rust-lang/rust.vim'
 " Plug 'Chiel92/vim-autoformat'
 " Plug 'tmhedberg/SimpylFold'
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
 " Plug 'cjrh/vim-conda'
+
+" A Vim Plugin for Lively Previewing LaTeX PDF Output
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
+Plug 'lervag/vimtex'
 call plug#end()
 
 source ~/.vim_runtime/vimrcs/basic.vim
@@ -38,13 +44,13 @@ endtry
 set t_Co=256
 colorscheme gruvbox
 
-set guifont=Monospace:h10
+set guifont=Monospace\ 12
 set nocompatible
 set number
 set mouse=a
 set splitright
 set splitbelow
-set autoindent
+set autoindent " smartindent? cindent?
 set showmatch
 set switchbuf="" " for Ack.vim
 
@@ -77,6 +83,9 @@ if empty(local_vimrc)
     autocmd filetype sh nnoremap <F4> :w <bar> :AsyncRun bash %<CR>
     autocmd filetype cuda nnoremap <F4> :w <bar> :AsyncRun nvcc -g -G -O0 -std=c++11 % -o %:r && echo Compilation complete && ./%:r<CR>
     autocmd filetype cool nnoremap <F4> :w <bar> :AsyncRun coolc % && spim %:r.s<CR>
+    autocmd filetype rust nnoremap <F4> :w <bar> :AsyncRun (cd %:p:h && cargo run)<CR>
+    autocmd filetype haskell nnoremap <F4> :w <bar> :AsyncRun ghc % -threaded && ./%:r<cr>
+    autocmd FileType haskell set et ts=2 shiftwidth=2
 endif
 " let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
@@ -142,7 +151,7 @@ nnoremap <C-g>f :echo cfi#format("%s", "")<CR>
 " vim python-mode
 let g:pymode_python = 'python3'
 " let g:pymode_virtualenv = "/home/damon/anaconda2"
-" let g:pymode_lint_checkers = ["pylint", ]
+let g:pymode_lint_checkers = ["pylint", ]
 let g:pymode_lint_ignore = ["E501", "E111", "E114"]
 let g:pymode_options_colorcolumn = 0
 

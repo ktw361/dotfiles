@@ -37,7 +37,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 " vim-go
 " Plugin 'faith/vim-go'
 "
-" Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 
 " current line function info in python
 Bundle "tyru/current-func-info.vim"

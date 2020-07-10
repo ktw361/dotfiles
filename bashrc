@@ -119,9 +119,13 @@ fi
 # added by Anaconda2 installer
 export PATH=$HOME"/anaconda2/bin:$PATH"
 
-# for CUDA-9.0
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
-export PATH=/usr/local/cuda-9.0/bin:$PATH
+# # for CUDA-9.0
+# export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
+# export PATH=/usr/local/cuda-9.0/bin:$PATH
+
+# for CUDA-9.2
+export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda-9.2/bin:$PATH
 
 # for ros kinetic
 #source /opt/ros/kinetic/setup.bash
@@ -138,8 +142,12 @@ export PATH=$PATH:/opt/scitools/bin/linux64
 # Against ros python
 #export PYTHONPATH=""
 
-# for golang
-export GOROOT=/usr/lib/go-1.9
+# for golang 1.9
+# export GOROOT=/usr/lib/go-1.9
+# export GOPATH=$HOME/go
+# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# for golang 1.13
+export GOROOT=/usr/lib/go-1.13
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
@@ -175,3 +183,9 @@ PATH=$HOME/cool_cs143/bin:$PATH
 # clang-ctags
 export LD_LIBRARY_PATH=$HOME/Github/llvm-project/build/lib/libclang.so:$LD_LIBRARY_PATH
 export PYTHONPATH=$HOME/Github/llvm-project/clang/bindings/python/:$PYTHONPATH
+
+# rust cargo
+source $HOME/.cargo/env
+
+# snap app store
+export PATH=$PATH:/snap/bin
