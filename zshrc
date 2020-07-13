@@ -100,11 +100,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-if [ "$(uname)" == "Darwin" ]; then
-    source ~/.bash_profile
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    source ~/.bashrc
-fi
+case `uname` in
+  Darwin)
+      source ~/.bash_profile
+  ;;
+  Linux)
+      source ~/.bashrc
+  ;;
+esac
 
 if [ -f /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate ]; then
     . /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate
