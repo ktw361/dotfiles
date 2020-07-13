@@ -8,8 +8,8 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="frisk"
+# ZSH_THEME="agnoster"
 # ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
@@ -100,4 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-source ~/.bashrc
+if [ "$(uname)" == "Darwin" ]; then
+    source ~/.bash_profile
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    source ~/.bashrc
+fi
+
+if [ -f /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate ]; then
+    . /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate
+fi
