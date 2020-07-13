@@ -7,7 +7,7 @@ do
         if [[ -f "$target" ]]; then
             backup=~/.$f.backup
             echo "Backup old -> $backup"
-            mv ~/.$f ~/.$f.backup
+            cp ~/.$f ~/.$f.backup
         fi
         ln -s ~/.dotfiles/$f ~/.$f
         echo ""
