@@ -77,8 +77,12 @@ if empty(local_vimrc)
     " autocmd filetype python set foldmethod=indent
     " autocmd filetype python set foldnestmax=2
     autocmd filetype c nnoremap <F4> :w <bar> :AsyncRun gcc -O0 -g % -o %:r && echo Compilation complete && ./%:r<CR>
-    " autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -std=c++11 -Wall -g -fsanitize=address '.shellescape('%').' -o'.shellescape('%:r').' && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./'.shellescape('%:r')<CR>
-    autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./%:r<CR>
+    if !empty(glob("/usr/bin/llvm-symbolizer-4.0"))
+        autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./%:r<CR>
+    else
+        autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ./%:r<CR>
+    endif
+    autocmd filetype lua nnoremap <F4> :w <bar> :AsyncRun lua %<CR>
     autocmd filetype go nnoremap <F4> :w <bar> :AsyncRun go run %<CR>
     autocmd filetype sh nnoremap <F4> :w <bar> :AsyncRun bash %<CR>
     autocmd filetype cuda nnoremap <F4> :w <bar> :AsyncRun nvcc -g -G -O0 -std=c++11 % -o %:r && echo Compilation complete && ./%:r<CR>
@@ -88,6 +92,9 @@ if empty(local_vimrc)
     autocmd FileType haskell set et ts=2 shiftwidth=2
 endif
 " let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+" Filetype auto commands
+autocmd filetype haskell set shiftwidth=2  tabstop=2
 
 " Quickfix/Location window
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
