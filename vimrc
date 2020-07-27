@@ -67,15 +67,17 @@ set wildmenu
 set exrc  " per project .vimrc
 set tags=./.tags;,.tags
 
-packadd termdebug
-let g:termdebug_wide=1
-
-command! MakeTags :AsyncRun ctags -f .tags -R .
-command! MakeCscope :AsyncRun cscope -f .cscope.out -R -b
-
 if has("unix")
   let s:uname = system("uname -s") " Linux / Darwin
 endif
+
+if s:uname == 'Linux'  " For mac os, use Termdbg
+    packadd termdebug
+    let g:termdebug_wide=1
+endif
+
+command! MakeTags :AsyncRun ctags -f .tags -R .
+command! MakeCscope :AsyncRun cscope -f .cscope.out -R -b
 
 " If we dont't have a local vimrc, then we set <F4> to execute single file.
 " otherwise(non empty case), we don't set it here
