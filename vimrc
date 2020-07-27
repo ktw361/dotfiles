@@ -67,6 +67,9 @@ set wildmenu
 set exrc  " per project .vimrc
 set tags=./.tags;,.tags
 
+packadd termdebug
+let g:termdebug_wide=1
+
 command! MakeTags :AsyncRun ctags -f .tags -R .
 command! MakeCscope :AsyncRun cscope -f .cscope.out -R -b
 
