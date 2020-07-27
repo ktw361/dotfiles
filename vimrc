@@ -1,10 +1,10 @@
 set runtimepath+=~/.vim_runtime
 
 " For vundle
-let vundle_file=findfile("~/.vim_vundle_rc.vim", ".;")
-if !empty(vundle_file) && filereadable(vundle_file)
-    source ~/.vim_vundle_rc.vim
-endif
+" let vundle_file=findfile("~/.vim_vundle_rc.vim", ".;")
+" if !empty(vundle_file) && filereadable(vundle_file)
+"     source ~/.vim_vundle_rc.vim
+" endif
 
 " Vim-Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -20,6 +20,7 @@ Plug 'majutsushi/tagbar'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'epheien/termdbg'
 " Plug 'Chiel92/vim-autoformat'
 " Plug 'tmhedberg/SimpylFold'
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
@@ -69,6 +70,10 @@ set tags=./.tags;,.tags
 command! MakeTags :AsyncRun ctags -f .tags -R .
 command! MakeCscope :AsyncRun cscope -f .cscope.out -R -b
 
+if has("unix")
+  let s:uname = system("uname -s") " Linux / Darwin
+endif
+
 " If we dont't have a local vimrc, then we set <F4> to execute single file.
 " otherwise(non empty case), we don't set it here
 let local_vimrc=findfile(".vimrc", ".")
@@ -79,6 +84,8 @@ if empty(local_vimrc)
     autocmd filetype c nnoremap <F4> :w <bar> :AsyncRun gcc -O0 -g % -o %:r && echo Compilation complete && ./%:r<CR>
     if !empty(glob("/usr/bin/llvm-symbolizer-4.0"))
         autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./%:r<CR>
+    elseif !empty(glob("/usr/local/opt/llvm/bin/llvm-symbolizer"))
+        autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/local/opt/llvm/bin/llvm-symbolizer ./%:r<CR>
     else
         autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ./%:r<CR>
     endif
@@ -136,8 +143,8 @@ let g:ale_cpp_clang_options = '  -std=c++11'
 " let g:ale_lint_delay
 
 " YouCompleteMe config
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+" let g:ycm_show_diagnostics_ui = 0
 
 " Disable auto-pair
 let g:AutoPairs={}
