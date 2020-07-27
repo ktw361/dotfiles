@@ -68,11 +68,11 @@ set exrc  " per project .vimrc
 set tags=./.tags;,.tags
 
 if has("unix")
-  let s:uname = system("uname -s") " Linux / Darwin
+  let s:uname = system("echo -n \"$(uname)\"") " Linux / Darwin
 endif
 
 if s:uname == 'Linux'  " For mac os, use Termdbg
-    packadd termdebug
+    packadd! termdebug
     let g:termdebug_wide=1
 endif
 
