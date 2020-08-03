@@ -1,10 +1,10 @@
 set runtimepath+=~/.vim_runtime
 
 " For vundle
-" let vundle_file=findfile("~/.vim_vundle_rc.vim", ".;")
-" if !empty(vundle_file) && filereadable(vundle_file)
-"     source ~/.vim_vundle_rc.vim
-" endif
+let vundle_file=findfile("~/.vim_vundle_rc.vim", ".;")
+if !empty(vundle_file) && filereadable(vundle_file)
+    source ~/.vim_vundle_rc.vim
+endif
 
 " Vim-Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -49,8 +49,8 @@ set guifont=Monospace\ 12
 set nocompatible
 set number
 set mouse=a
-set splitright
 set splitbelow
+set splitright
 set autoindent " smartindent? cindent?
 set showmatch
 set switchbuf="" " for Ack.vim
@@ -83,21 +83,35 @@ command! MakeCscope :AsyncRun cscope -f .cscope.out -R -b
 " otherwise(non empty case), we don't set it here
 let local_vimrc=findfile(".vimrc", ".")
 if empty(local_vimrc)
-    autocmd filetype python nnoremap <F4> :w <bar> :AsyncRun -raw python3 %<CR>
+    autocmd filetype python nnoremap <F4> :AsyncRun -save=1 -raw python3 %<CR>
     " autocmd filetype python set foldmethod=indent
     " autocmd filetype python set foldnestmax=2
-    autocmd filetype c nnoremap <F4> :w <bar> :AsyncRun gcc -O0 -g % -o %:r && echo Compilation complete && ./%:r<CR>
+    autocmd filetype c nnoremap <F4> :AsyncRun -save=1 gcc -O0 -g % -o %:r && echo Compilation complete && ./%:r<CR>
     if !empty(glob("/usr/bin/llvm-symbolizer-4.0"))
-        autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./%:r<CR>
+        autocmd filetype cpp nnoremap <F4> :AsyncRun -save=1
+                    \ -mode=term -focus=0 -pos=right -cols=80
+                    \ g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  
+                    \ && echo Compilation complete && 
+                    \ ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./%:r<CR>
     elseif !empty(glob("/usr/local/opt/llvm/bin/llvm-symbolizer"))
-        autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ASAN_SYMBOLIZER_PATH=/usr/local/opt/llvm/bin/llvm-symbolizer ./%:r<CR>
+        autocmd filetype cpp nnoremap <F4> :AsyncRun -save=1 
+                    \ -mode=term -focus=0 -pos=right -cols=80
+                    \ g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  
+                    \ && echo Compilation complete 
+                    \ && ASAN_SYMBOLIZER_PATH=/usr/local/opt/llvm/bin/llvm-symbolizer ./%:r<CR>
     else
-        autocmd filetype cpp nnoremap <F4> :w<bar>:AsyncRun g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  && echo Compilation complete && ./%:r<CR>
+        autocmd filetype cpp nnoremap <F4> :AsyncRun -save=1 
+                    \ -mode=term -focus=0 -pos=right -cols=80
+                    \ g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  
+                    \ && echo Compilation complete && ./%:r<CR>
     endif
+    autocmd filetype cuda nnoremap <F4> :AsyncRun -save=1
+                \ -mode=term -focus=0 -pos=right -cols=80
+                \ nvcc -g -G -O0 -std=c++11 % -o %:r 
+                \ && echo Compilation complete && ./%:r<CR>
     autocmd filetype lua nnoremap <F4> :w <bar> :AsyncRun lua %<CR>
     autocmd filetype go nnoremap <F4> :w <bar> :AsyncRun go run %<CR>
     autocmd filetype sh nnoremap <F4> :w <bar> :AsyncRun bash %<CR>
-    autocmd filetype cuda nnoremap <F4> :w <bar> :AsyncRun nvcc -g -G -O0 -std=c++11 % -o %:r && echo Compilation complete && ./%:r<CR>
     autocmd filetype cool nnoremap <F4> :w <bar> :AsyncRun coolc % && spim %:r.s<CR>
     autocmd filetype rust nnoremap <F4> :w <bar> :AsyncRun (cd %:p:h && cargo run)<CR>
     autocmd filetype haskell nnoremap <F4> :w <bar> :AsyncRun ghc % -threaded && ./%:r<cr>
@@ -148,8 +162,14 @@ let g:ale_cpp_clang_options = '  -std=c++11'
 " let g:ale_lint_delay
 
 " YouCompleteMe config
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-" let g:ycm_show_diagnostics_ui = 0
+nnoremap <leader>] :YcmCompleter GoTo<cr>
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python3.8'
+"
+" turn YCM's linter off in favor of ALE
+let g:ycm_show_diagnostics_ui = 0  
+" alternatively, turn ALE off
+" let g:ale_enabled = 0
 
 " Disable auto-pair
 let g:AutoPairs={}

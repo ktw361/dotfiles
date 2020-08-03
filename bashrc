@@ -125,6 +125,7 @@ export PATH=$HOME"/anaconda2/bin:$PATH"
 
 # for CUDA-9.2
 export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda-9.2/targets/x86_64-linux/lib:$LD_LIBRARY_PATH  # cublas
 export PATH=/usr/local/cuda-9.2/bin:$PATH
 
 # for ros kinetic
