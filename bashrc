@@ -124,9 +124,13 @@ export PATH=$HOME"/anaconda2/bin:$PATH"
 # export PATH=/usr/local/cuda-9.0/bin:$PATH
 
 # for CUDA-9.2
-export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:$LD_LIBRARY_PATH
-# export LD_LIBRARY_PATH=/usr/local/cuda-9.2/targets/x86_64-linux/lib:$LD_LIBRARY_PATH  # cublas
-export PATH=/usr/local/cuda-9.2/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:$LD_LIBRARY_PATH
+# export PATH=/usr/local/cuda-9.2/bin:$PATH
+
+# for CUDA-11.0
+export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda-11.0/targets/x86_64-linux/lib:$LD_LIBRARY_PATH  # cublas
+export PATH=/usr/local/cuda-11.0/bin:$PATH
 
 # for ros kinetic
 #source /opt/ros/kinetic/setup.bash
@@ -190,3 +194,7 @@ source $HOME/.cargo/env
 
 # snap app store
 export PATH=$PATH:/snap/bin
+
+# TensorRT Binary
+export TRT_RELEASE=$HOME/TensorRT-7.1.3.4
+export LD_LIBRARY_PATH=$TRT_RELEASE/lib:$LD_LIBRARY_PATH

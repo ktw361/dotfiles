@@ -21,6 +21,8 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'epheien/termdbg'
+" Plug 'neoclide/coc.nvim'
+" Plug 'prabirshrestha/vim-lsp'
 " Plug 'Chiel92/vim-autoformat'
 " Plug 'tmhedberg/SimpylFold'
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
@@ -42,6 +44,9 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry
 
+" coc.vim
+" source ~/.vim/.coc.vimrc
+
 set t_Co=256
 colorscheme gruvbox
 
@@ -54,7 +59,6 @@ set splitright
 set autoindent " smartindent? cindent?
 set showmatch
 set switchbuf="" " for Ack.vim
-
 set shiftwidth=4
 set tabstop=4
 set expandtab
