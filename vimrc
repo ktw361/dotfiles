@@ -29,7 +29,7 @@ Plug 'epheien/termdbg'
 " Plug 'cjrh/vim-conda'
 
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 Plug 'lervag/vimtex'
 call plug#end()
