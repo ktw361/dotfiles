@@ -198,3 +198,10 @@ export PATH=$PATH:/snap/bin
 # TensorRT Binary
 export TRT_RELEASE=$HOME/TensorRT-7.1.3.4
 export LD_LIBRARY_PATH=$TRT_RELEASE/lib:$LD_LIBRARY_PATH
+
+# Julia
+export PATH=$HOME/Software/julia-1.5.2/bin:$PATH
+
+# $HOME/local/bin
+export PATH=$HOME/local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
