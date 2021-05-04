@@ -9,7 +9,7 @@ do
             echo "Backup old -> $backup"
             cp ~/.$f ~/.$f.backup
         fi
-        ln -s ~/.dotfiles/$f ~/.$f
+        ln -sf ~/.dotfiles/$f ~/.$f
         echo ""
 	fi
 done
