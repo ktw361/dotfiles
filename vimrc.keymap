@@ -9,7 +9,7 @@ ino {<CR> {<CR>}<ESC>O
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 " fast close quickfix and location list
-nnoremap <esc><esc><esc> :ccl<cr>:lcl<cr>:pc<cr>:TagbarClose<cr>:NERDTreeTabsClose<cr>
+nnoremap <esc><esc><esc> :ccl<cr>:lcl<cr>:pc<cr>:TagbarClose<cr>:NERDTreeClose<cr>
 
 inoremap <C-S-Sapce> <C-Space>
 

@@ -7,6 +7,7 @@ alias models-local='cd ~/Github/models_local/research'
 alias experiment='cd ~/Github/models_local/research/lstm_object_detection/experiments/smallVID2015/'
 alias mmdet='cd ~/Github/mmlab/mmdetection'
 alias testcpp='cd ~/Documents/test-cpp/'
+alias phd='cd ~/Github/PhDApply/'
 
 alias rsync='rsync -av --progress'
 

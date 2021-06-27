@@ -17,10 +17,12 @@ Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
-Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'jistr/vim-nerdtree-tabs'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'epheien/termdbg'
+" Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 " Plug 'neoclide/coc.nvim'
 " Plug 'prabirshrestha/vim-lsp'
 " Plug 'Chiel92/vim-autoformat'
@@ -155,9 +157,9 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 
 " NerdTree/NerdTreeTabs Settings
 let g:NERDTreeWinPos = "left"
-nnoremap <Leader>nn :NERDTreeTabsToggle<cr>
-nnoremap <F8> :NERDTreeTabsToggle<cr>
-" nnoremap <F8> :NERDTreeToggle<cr>
+" nnoremap <Leader>nn :NERDTreeTabsToggle<cr>
+" nnoremap <F8> :NERDTreeTabsToggle<cr>
+nnoremap <F8> :NERDTreeToggle<cr>
 
 " Turn off annoying ALE default sign column for c++11
 let g:ale_linters = {'cpp': ['g++']}

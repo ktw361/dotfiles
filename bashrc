@@ -119,14 +119,6 @@ fi
 # added by Anaconda2 installer
 export PATH=$HOME"/anaconda2/bin:$PATH"
 
-# # for CUDA-9.0
-# export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
-# export PATH=/usr/local/cuda-9.0/bin:$PATH
-
-# for CUDA-9.2
-# export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:$LD_LIBRARY_PATH
-# export PATH=/usr/local/cuda-9.2/bin:$PATH
-
 # for CUDA-11.0
 export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64:$LD_LIBRARY_PATH
 # export LD_LIBRARY_PATH=/usr/local/cuda-11.0/targets/x86_64-linux/lib:$LD_LIBRARY_PATH  # cublas
@@ -156,12 +148,8 @@ export GOROOT=/usr/lib/go-1.13
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-# From tensorflow/models/research/
-# MODELS_RESEARCH=$HOME/Github/models/research
-# export PYTHONPATH=$PYTHONPATH:$MODELS_RESEARCH:$MODELS_RESEARCH/slim
-
 # Solarized
-eval `dircolors $HOME/.dir_colors/dircolors`
+[ -d "$HOME/.dir_colors" ] && eval `dircolors $HOME/.dir_colors/dircolors`
 
 # SCM Breeze
 [ -s $HOME"/.scm_breeze/scm_breeze.sh" ] && source $HOME"/.scm_breeze/scm_breeze.sh"
@@ -183,18 +171,14 @@ eval `dircolors $HOME/.dir_colors/dircolors`
 # }
 
 # for cs143 compiler `cool`
-PATH=$HOME/cool_cs143/bin:$PATH
-
-# clang-ctags
-export LD_LIBRARY_PATH=$HOME/Github/llvm-project/build/lib/libclang.so:$LD_LIBRARY_PATH
-export PYTHONPATH=$HOME/Github/llvm-project/clang/bindings/python/:$PYTHONPATH
+[ -d $HOME/cool_cs143 ] && export PATH=$HOME/cool_cs143/bin:$PATH 
 
 # rust cargo
-source $HOME/.cargo/env
+[ -d "$HOME/.cargo" ] && source $HOME/.cargo/env
 
 # snap app store
 export PATH=$PATH:/snap/bin
 
-# TensorRT Binary
-export TRT_RELEASE=$HOME/TensorRT-7.1.3.4
-export LD_LIBRARY_PATH=$TRT_RELEASE/lib:$LD_LIBRARY_PATH
+# $HOME/local/bin
+export PATH=$HOME/local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH

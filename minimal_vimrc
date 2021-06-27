@@ -1,0 +1,28 @@
+" A minimal vimrc
+
+set nocompatible
+set number
+
+set incsearch
+set hlsearch
+
+set splitbelow
+set splitright
+set autoindent " smartindent? cindent?
+set showmatch
+
+set shiftwidth=4
+set tabstop=4
+set expandtab
+
+syntax enable
+filetype plugin on
+
+set path+=**
+set wildmenu
+set exrc  " per project .vimrc
+
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
