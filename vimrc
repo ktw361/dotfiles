@@ -100,7 +100,7 @@ if empty(local_vimrc)
     elseif !empty(glob("/usr/local/opt/llvm/bin/llvm-symbolizer"))
         autocmd filetype cpp nnoremap <F4> :AsyncRun -save=1 
                     \ -mode=term -focus=0 -pos=right -cols=80
-                    \ g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  
+                    \ g++ -std=c++11 -Wall -O0 -g -DDEBUG -fsanitize=address % -o %:r  
                     \ && echo Compilation complete 
                     \ && ASAN_SYMBOLIZER_PATH=/usr/local/opt/llvm/bin/llvm-symbolizer ./%:r<CR>
     else
@@ -168,7 +168,7 @@ let g:ale_cpp_clang_options = '  -std=c++11'
 " YouCompleteMe config
 nnoremap <leader>] :YcmCompleter GoTo<cr>
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_path_to_python_interpreter = '/usr/bin/python3.8'
+" let g:ycm_path_to_python_interpreter = '/usr/bin/python3.8'
 "
 " turn YCM's linter off in favor of ALE
 let g:ycm_show_diagnostics_ui = 0  
