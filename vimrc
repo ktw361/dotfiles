@@ -212,6 +212,9 @@ command! ShowFunc :lvim /def\ ./ %<cr>:lopen<cr>
 command! ShowClass :lvim /^class\ ./ %<cr>:lopen<cr>
 command! Ipdb :normal Oimport ipdb; ipdb.set_trace()  # XXX BREAKPOINT
 
+" matching c++ template
+autocmd FileType cpp setlocal matchpairs+=<:>
+
 " load my vim keymap
 source ~/.vimrc.keymap
 
