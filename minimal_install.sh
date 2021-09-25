@@ -11,3 +11,7 @@ if [[ -f ~/.tmux.conf ]]; then
     cp ~/.tmux.conf ~/.tmux.conf.backup
 fi
 ln -sf ${cur_dir}/tmux.conf ~/.tmux.conf
+
+echo "Copying minimal_bashrc"
+cp ~/.bashrc ~/.bashrc.backup
+ln -sf ${cur_dir}/minimal_bashrc ~/.bashrc

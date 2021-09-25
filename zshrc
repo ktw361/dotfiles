@@ -113,21 +113,3 @@ if [ -f /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate ]; then
     . /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate
 fi
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zhifan/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/zhifan/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/zhifan/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/zhifan/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-[ -s "/home/zhifan/.scm_breeze/scm_breeze.sh" ] && source "/home/zhifan/.scm_breeze/scm_breeze.sh"
