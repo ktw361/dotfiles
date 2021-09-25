@@ -1,4 +1,4 @@
-cur_dir=$(dirname "$0")
+cur_dir=$(cd $(dirname "$0") && pwd)
 
 echo "Copying minimal_vimrc"
 if [[ -f ~/.vimrc ]]; then
