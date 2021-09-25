@@ -116,29 +116,6 @@ fi
 #   fi
 # fi
 
-# added by Anaconda2 installer
-export PATH=$HOME"/anaconda2/bin:$PATH"
-
-# for CUDA-11.0
-export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64:$LD_LIBRARY_PATH
-# export LD_LIBRARY_PATH=/usr/local/cuda-11.0/targets/x86_64-linux/lib:$LD_LIBRARY_PATH  # cublas
-export PATH=/usr/local/cuda-11.0/bin:$PATH
-
-# for ros kinetic
-#source /opt/ros/kinetic/setup.bash
-
-# for ros workspace
-#source ~/catkin_ws/devel/setup.bash 
-
-# Scitool Understand 939
-export PATH=$PATH:/opt/scitools/bin/linux64
-
-# Virtual Environment Wrapper
-#source /usr/local/bin/virtualenvwrapper.sh
-
-# Against ros python
-#export PYTHONPATH=""
-
 # for golang 1.9
 # export GOROOT=/usr/lib/go-1.9
 # export GOPATH=$HOME/go
@@ -169,10 +146,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #         fi
 #     fi
 # }
-
-# for cs143 compiler `cool`
-[ -d $HOME/cool_cs143 ] && export PATH=$HOME/cool_cs143/bin:$PATH 
-
 # rust cargo
 [ -d "$HOME/.cargo" ] && source $HOME/.cargo/env
 
@@ -182,3 +155,28 @@ export PATH=$PATH:/snap/bin
 # $HOME/local/bin
 export PATH=$HOME/local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
+
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+
+export PATH=~/anaconda3/bin:$PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/zhifan/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/zhifan/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/zhifan/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/zhifan/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+[ -s "/home/zhifan/.scm_breeze/scm_breeze.sh" ] && source "/home/zhifan/.scm_breeze/scm_breeze.sh"
+
+export PATH=$PATH:/usr/local/cuda-10.2/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.2/lib64
