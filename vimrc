@@ -164,8 +164,9 @@ nnoremap <F8> :NERDTreeToggle<cr>
 " Turn off annoying ALE default sign column for c++11
 let g:ale_linters = {'cpp': ['g++']}
 let g:ale_lint_on_text_changed = 'normal'
-let g:ale_cpp_clang_options = '  -std=c++11'
+let g:ale_cpp_clang_options = '-std=c++11'
 " let g:ale_lint_delay
+let g:ale_cpp_gcc_options = ' -std=c++11 -Wall -Wno-sign-compare'
 
 " YouCompleteMe config
 nnoremap <leader>] :YcmCompleter GoTo<cr>
