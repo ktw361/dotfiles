@@ -146,8 +146,9 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #         fi
 #     fi
 # }
+
 # rust cargo
-[ -d "$HOME/.cargo" ] && source $HOME/.cargo/env
+[ -d "$HOME/.cargo" ] && export PATH=$PATH:$HOME/.cargo/bin
 
 # snap app store
 export PATH=$PATH:/snap/bin
@@ -180,3 +181,5 @@ unset __conda_setup
 
 export PATH=$PATH:/usr/local/cuda-10.2/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.2/lib64
+
+source $HOME/.bashrc.local
