@@ -113,3 +113,19 @@ if [ -f /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate ]; then
     . /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate
 fi
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/eve/miniconda2/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/eve/miniconda2/etc/profile.d/conda.sh" ]; then
+        . "/home/eve/miniconda2/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/eve/miniconda2/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

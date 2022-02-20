@@ -128,9 +128,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # Solarized
 [ -d "$HOME/.dir_colors" ] && eval `dircolors $HOME/.dir_colors/dircolors`
 
-# SCM Breeze
-[ -s $HOME"/.scm_breeze/scm_breeze.sh" ] && source $HOME"/.scm_breeze/scm_breeze.sh"
-
 # function cd {
 #     # cd + ls 
 #     local target="$@"
@@ -151,35 +148,10 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 [ -d "$HOME/.cargo" ] && export PATH=$PATH:$HOME/.cargo/bin
 
 # snap app store
-export PATH=$PATH:/snap/bin
+# export PATH=$PATH:/snap/bin
 
 # $HOME/local/bin
 export PATH=$HOME/local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
 
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-
-export PATH=~/anaconda3/bin:$PATH
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zhifan/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/zhifan/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/zhifan/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/zhifan/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-[ -s "/home/zhifan/.scm_breeze/scm_breeze.sh" ] && source "/home/zhifan/.scm_breeze/scm_breeze.sh"
-
-export PATH=$PATH:/usr/local/cuda-10.2/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.2/lib64
-
-source $HOME/.bashrc.local
+# source $HOME/.bashrc.local

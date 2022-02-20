@@ -227,6 +227,7 @@ command! Ipdb :normal Oimport ipdb; ipdb.set_trace()  # XXX BREAKPOINT
 let g:jedi#auto_initialization = 0  " Please use local .vimrc
 let g:jedi#popup_on_dot = 0
 let g:jedi#completions_command = "<C-N>"
+let g:jedi#goto_assignments_command = ""
 autocmd filetype python nnoremap <C-]> :call jedi#goto()<CR>
 " Set environment let g:jedi#environment_path = "/usr/bin/python3.9"
 
