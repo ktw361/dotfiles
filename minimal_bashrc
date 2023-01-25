@@ -39,6 +39,7 @@ fi
 # case "$TERM" in
 #     xterm-color|*-256color) color_prompt=yes;;
 # esac
+export TERM="xterm-256color" # For vim inside tmux
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -104,54 +105,3 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-# if ! shopt -oq posix; then
-#   if [ -f /usr/share/bash-completion/bash_completion ]; then
-#     . /usr/share/bash-completion/bash_completion
-#   elif [ -f /etc/bash_completion ]; then
-#     . /etc/bash_completion
-#   fi
-# fi
-
-# for golang 1.9
-# export GOROOT=/usr/lib/go-1.9
-# export GOPATH=$HOME/go
-# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-# for golang 1.13
-export GOROOT=/usr/lib/go-1.13
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-# Solarized
-[ -d "$HOME/.dir_colors" ] && eval `dircolors $HOME/.dir_colors/dircolors`
-
-# function cd {
-#     # cd + ls 
-#     local target="$@"
-#     if [[ -z "$target" ]]; then
-#         builtin cd && ls -F
-#     else
-#         local num_files=`ls $target -1 | wc -l`
-#         if (( $num_files < 100 )); then
-#             builtin cd "$target" && ls -F
-#         else
-#             # Normal cd if too many files
-#             builtin cd "$target"
-#         fi
-#     fi
-# }
-
-# rust cargo
-[ -d "$HOME/.cargo" ] && export PATH=$PATH:$HOME/.cargo/bin
-
-# snap app store
-# export PATH=$PATH:/snap/bin
-
-# $HOME/local/bin
-export PATH=$HOME/local/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
-
-# source $HOME/.bashrc.local

@@ -23,6 +23,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'epheien/termdbg'
 " Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'davidhalter/jedi-vim'
 " Plug 'neoclide/coc.nvim'
 " Plug 'prabirshrestha/vim-lsp'
 " Plug 'Chiel92/vim-autoformat'
@@ -138,9 +139,6 @@ let g:asyncrun_open = 7
 map <leader>a :AsyncRun 
 map <leader>g :AsyncRun ag 
 
-" Cool Language commentary
-autocmd FileType cool setlocal commentstring=--\ %s
-
 " SimpylFold
 " let g:SimpylFold_fold_import = 0
 
@@ -171,11 +169,6 @@ let g:ale_cpp_clang_options = '  -std=c++17'
 nnoremap <leader>] :YcmCompleter GoTo<cr>
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 " let g:ycm_path_to_python_interpreter = '/usr/bin/python3.8'
-"
-" turn YCM's linter off in favor of ALE
-let g:ycm_show_diagnostics_ui = 0  
-" alternatively, turn ALE off
-" let g:ale_enabled = 0
 
 " Disable auto-pair
 let g:AutoPairs={}
@@ -193,6 +186,38 @@ endif
 " current line function info in python
 nnoremap <C-g>f :echo cfi#format("%s", "")<CR>
 
+""""""""""""""""""""""""
+" Package: ALE
+
+" Turn off annoying ALE default sign column for c++11
+let g:ale_linters = {'cpp': ['g++']}
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_cpp_clang_options = '-std=c++17'
+" let g:ale_lint_delay
+let g:ale_cpp_gcc_options = ' -std=c++17 -Wall -Wno-sign-compare'
+
+" turn YCM's linter off in favor of ALE
+let g:ycm_show_diagnostics_ui = 0  
+" alternatively, turn ALE off
+" let g:ale_enabled = 0
+
+" Package End: ALE
+""""""""""""""""""""""""
+ 
+
+""""""""""""""""""""""""
+" Language: Cpp / C++
+
+" matching c++ template
+autocmd FileType cpp setlocal matchpairs+=<:>
+
+" Language End: Cpp / C++
+""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""
+" Language: python
+
 " vim python-mode
 let g:pymode_python = 'python3'
 " let g:pymode_virtualenv = "/home/damon/anaconda2"
@@ -200,20 +225,28 @@ let g:pymode_lint_checkers = ["pylint", ]
 let g:pymode_lint_ignore = ["E501", "E111", "E114"]
 let g:pymode_options_colorcolumn = 0
 
+" python function list helper
+command! ShowFunc :lvim /def\ ./ %<cr>:lopen<cr>
+command! ShowClass :lvim /^class\ ./ %<cr>:lopen<cr>
+command! Ipdb :normal Oimport ipdb; ipdb.set_trace()  # XXX BREAKPOINT
+
+" Jedi
+let g:jedi#auto_initialization = 0  " Please use local .vimrc
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = "<C-N>"
+let g:jedi#goto_assignments_command = ""
+autocmd filetype python nnoremap <C-]> :call jedi#goto()<CR>
+" Set environment let g:jedi#environment_path = "/usr/bin/python3.9"
+
+" Language End: python
+""""""""""""""""""""""""
+
 " Ack.vim
 cnoreabbrev Ack Ack!
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 let g:ack_mappings = { "o": "<CR><C-W>j", "h": "h" }
-
-" python function list helper
-command! ShowFunc :lvim /def\ ./ %<cr>:lopen<cr>
-command! ShowClass :lvim /^class\ ./ %<cr>:lopen<cr>
-command! Ipdb :normal Oimport ipdb; ipdb.set_trace()  # XXX BREAKPOINT
-
-" matching c++ template
-autocmd FileType cpp setlocal matchpairs+=<:>
 
 " load my vim keymap
 source ~/.vimrc.keymap
