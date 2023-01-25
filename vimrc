@@ -96,24 +96,24 @@ if empty(local_vimrc)
     if !empty(glob("/usr/bin/llvm-symbolizer-4.0"))
         autocmd filetype cpp nnoremap <F4> :AsyncRun -save=1
                     \ -mode=term -focus=0 -pos=right -cols=80
-                    \ g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  
+                    \ g++ -std=c++17 -Wall -O0 -g -fsanitize=address % -o %:r  
                     \ && echo Compilation complete && 
                     \ ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-4.0 ./%:r<CR>
     elseif !empty(glob("/usr/local/opt/llvm/bin/llvm-symbolizer"))
         autocmd filetype cpp nnoremap <F4> :AsyncRun -save=1 
                     \ -mode=term -focus=0 -pos=right -cols=80
-                    \ g++ -std=c++11 -Wall -O0 -g -DDEBUG -fsanitize=address % -o %:r  
+                    \ g++ -std=c++17 -Wall -O0 -g -DDEBUG -fsanitize=address % -o %:r  
                     \ && echo Compilation complete 
                     \ && ASAN_SYMBOLIZER_PATH=/usr/local/opt/llvm/bin/llvm-symbolizer ./%:r<CR>
     else
         autocmd filetype cpp nnoremap <F4> :AsyncRun -save=1 
                     \ -mode=term -focus=0 -pos=right -cols=80
-                    \ g++ -std=c++11 -Wall -O0 -g -fsanitize=address % -o %:r  
+                    \ g++ -std=c++17 -Wall -O0 -g -fsanitize=address % -o %:r  
                     \ && echo Compilation complete && ./%:r<CR>
     endif
     autocmd filetype cuda nnoremap <F4> :AsyncRun -save=1
                 \ -mode=term -focus=0 -pos=right -cols=80
-                \ nvcc -g -G -O0 -std=c++11 % -o %:r 
+                \ nvcc -g -G -O0 -std=c++17 % -o %:r 
                 \ && echo Compilation complete && ./%:r<CR>
     autocmd filetype lua nnoremap <F4> :w <bar> :AsyncRun lua %<CR>
     autocmd filetype go nnoremap <F4> :w <bar> :AsyncRun go run %<CR>
@@ -123,7 +123,7 @@ if empty(local_vimrc)
     autocmd filetype haskell nnoremap <F4> :w <bar> :AsyncRun ghc % -threaded && ./%:r<cr>
     autocmd FileType haskell set et ts=2 shiftwidth=2
 endif
-" let g:syntastic_cpp_compiler_options = ' -std=c++11'
+" let g:syntastic_cpp_compiler_options = ' -std=c++17'
 
 " Filetype auto commands
 autocmd filetype haskell set shiftwidth=2  tabstop=2
@@ -161,10 +161,10 @@ let g:NERDTreeWinPos = "left"
 " nnoremap <F8> :NERDTreeTabsToggle<cr>
 nnoremap <F8> :NERDTreeToggle<cr>
 
-" Turn off annoying ALE default sign column for c++11
+" Turn off annoying ALE default sign column for c++17
 let g:ale_linters = {'cpp': ['g++']}
 let g:ale_lint_on_text_changed = 'normal'
-let g:ale_cpp_clang_options = '  -std=c++11'
+let g:ale_cpp_clang_options = '  -std=c++17'
 " let g:ale_lint_delay
 
 " YouCompleteMe config
