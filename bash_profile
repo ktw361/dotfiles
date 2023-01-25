@@ -23,8 +23,6 @@ alias agn='ag --ignore="tags"'
 
 export Torchsrc="/anaconda3/envs/torch/lib/python3.5/site-packages/torch/"
 
-source /Users/zhifanzhu/.ghcup/env
-
 [ -s "/Users/zhifanzhu/.scm_breeze/scm_breeze.sh" ] && source "/Users/zhifanzhu/.scm_breeze/scm_breeze.sh"
 if [ -e /Users/zhifanzhu/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/zhifanzhu/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
@@ -51,4 +49,4 @@ export JAVA_HOME=$HOME/jdk-17.0.2.jdk/Contents/Home
 # Maven
 export PATH=$HOME/apache-maven-3.8.4/bin:$PATH
 
-unalias gs
+# unalias gs
