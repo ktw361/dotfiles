@@ -112,5 +112,3 @@ esac
 if [ -f /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate ]; then
     . /Users/zhifanzhu/Desktop/repos/torch/install/bin/torch-activate
 fi
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
-
