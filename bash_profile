@@ -1,13 +1,5 @@
 cd ~/Desktop
 
-##
-# Your previous /Users/zhifanzhu/.bash_profile file was backed up as /Users/zhifanzhu/.bash_profile.macports-saved_2018-06-20_at_12:03:06
-##
-
-# MacPorts Installer addition on 2018-06-20_at_12:03:06: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
-
 # export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 # export CLICOLOR=1
 # export LSCOLORS=ExFxBxDxCxegedabagacad
@@ -20,8 +12,6 @@ export PATH="/usr/local/opt/go@1.9/bin:$PATH"
 
 alias grepn='grep -rn --color --exclude="tags"'
 alias agn='ag --ignore="tags"'
-
-export Torchsrc="/anaconda3/envs/torch/lib/python3.5/site-packages/torch/"
 
 [ -s "/Users/zhifanzhu/.scm_breeze/scm_breeze.sh" ] && source "/Users/zhifanzhu/.scm_breeze/scm_breeze.sh"
 if [ -e /Users/zhifanzhu/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/zhifanzhu/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
