@@ -123,6 +123,10 @@ if empty(local_vimrc)
     autocmd filetype rust nnoremap <F4> :w <bar> :AsyncRun (cd %:p:h && cargo run)<CR>
     autocmd filetype haskell nnoremap <F4> :w <bar> :AsyncRun ghc % -threaded && ./%:r<cr>
     autocmd FileType haskell set et ts=2 shiftwidth=2
+    autocmd filetype javascript nnoremap <F4> :w <bar> :AsyncRun node %<cr>
+    autocmd filetype javascript nnoremap <F4> :AsyncRun -save=1 
+                \ -mode=term -focus=0 -pos=right -cols=80
+                \ node %<CR>
 endif
 " let g:syntastic_cpp_compiler_options = ' -std=c++17'
 
